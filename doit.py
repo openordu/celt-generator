@@ -66,7 +66,7 @@ except: pass
 # 1. get full html page for each version
 for text in texts:
     url = "%s/%s.%s" % ('https://celt.ucc.ie/published', text, "html")
-    text_content = getPage(url, headers)
+    text_content = getPage(url, headers).replace("<DIV2>","DIV2")
     soup = BeautifulSoup(text_content, "lxml")
     # 1. get page title with BeautifulSoup
     try: title = soup.find_all('title')[0].text
